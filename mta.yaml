@@ -1,11 +1,11 @@
 ## Generated mta.yaml based on template version 0.4.0
-## appName = hanadev01
+## appName = motor-de-regras
 ## language=nodejs; multiTenant=false
 ## approuter=
 _schema-version: '3.1'
-ID: hanadev01
+ID: motor-de-regras
 version: 1.0.0
-description: "A simple CAP project."
+description: "Motor de Regras"
 parameters:
   enable-parallel-deployments: true
    

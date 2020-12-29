@@ -1,0 +1,6 @@
+---
+applications:
+- name: motor-regras
+  random-route: false
+  path: ./
+  memory: 1024M
