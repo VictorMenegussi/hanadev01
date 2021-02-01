@@ -1,0 +1,4 @@
+VIEW MotorDeRegras_TipoOsHelp AS SELECT
+  TipoOsHelpOdata_0.tipoOs,
+  TipoOsHelpOdata_0.descricaoOs
+FROM regrasNamespace_TipoOsHelpOdata AS TipoOsHelpOdata_0

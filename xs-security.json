@@ -1,0 +1,30 @@
+{
+    "xsappname": "xsmotor-regras",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "uaa.user",
+            "description": "UAA"
+        },
+        {
+            "name": "$XSAPPNAME.Edit",
+            "description": "Scope para edição do motor de regras"
+        }
+    ],
+    "role-templates": [
+        {
+            "name": "Token_Exchange",
+            "description": "UAA",
+            "scope-references": [
+                "uaa.user"
+            ]
+        },
+        {
+            "name": "Admin",
+            "description": "Role para usuario administrador do motor de regras",
+            "scope-references": [
+                "$XSAPPNAME.Edit"
+            ]
+        }
+    ]
+}

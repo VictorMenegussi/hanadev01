@@ -1,0 +1,432 @@
+{
+  "namespace": "regrasNamespace",
+  "definitions": {
+    "MotorDeRegras": {
+      "@source": "services.cds",
+      "kind": "service"
+    },
+    "MotorDeRegras.BOM": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "to": "Edit"
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.BOM2ODATA"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "tipoInstalacao": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "idTipoOS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "descTipoOs": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "codMaterialSAP": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "descMaterial": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "qtdMin": {
+          "type": "cds.Decimal"
+        },
+        "qtdMax": {
+          "type": "cds.Decimal"
+        },
+        "unidadeConsumo": {
+          "type": "cds.String",
+          "length": 3
+        }
+      },
+      "$syntax": "projection"
+    },
+    "MotorDeRegras.Parametros": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "to": "Edit"
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.Parametros"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "parametros": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "labelParametro": {
+          "type": "cds.String"
+        },
+        "valor": {
+          "type": "cds.String"
+        }
+      },
+      "$syntax": "projection"
+    },
+    "MotorDeRegras.RegraDeCalculo": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "to": "Edit"
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.RegraDeCalculo"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "momento": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "tipoDeErro": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Mensagem": {
+          "type": "cds.Integer"
+        }
+      },
+      "$syntax": "projection"
+    },
+    "MotorDeRegras.TecnicoPorEPO": {
+      "kind": "entity",
+      "@restrict": [
+        {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "to": "Edit"
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.TecnicoPorEPO"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "loginTecnico": {
+          "key": true,
+          "type": "cds.String",
+          "length": 120
+        },
+        "CodFornecedorSAP": {
+          "type": "cds.String",
+          "length": 50
+        }
+      },
+      "$syntax": "projection"
+    },
+    "MotorDeRegras.TipoOsHelp": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.TipoOsHelpOdata"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "tipoOs": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "descricaoOs": {
+          "type": "cds.String",
+          "length": 50
+        }
+      },
+      "$syntax": "projection"
+    },
+    "regrasNamespace.BOM": {
+      "kind": "entity",
+      "elements": {
+        "tipoInstalacao": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "idTipoOS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "codMaterialSAP": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "qtdMin": {
+          "type": "cds.Decimal"
+        },
+        "qtdMax": {
+          "type": "cds.Decimal"
+        },
+        "unidadeConsumo": {
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "regrasNamespace.BOM2ODATA": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.BOM"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "tipoInstalacao"
+              ]
+            },
+            {
+              "ref": [
+                "idTipoOS"
+              ]
+            },
+            {
+              "val": "",
+              "as": "descTipoOs",
+              "cast": {
+                "type": "cds.String",
+                "length": 50
+              }
+            },
+            {
+              "ref": [
+                "codMaterialSAP"
+              ]
+            },
+            {
+              "val": "",
+              "as": "descMaterial",
+              "cast": {
+                "type": "cds.String",
+                "length": 50
+              }
+            },
+            {
+              "ref": [
+                "qtdMin"
+              ]
+            },
+            {
+              "ref": [
+                "qtdMax"
+              ]
+            },
+            {
+              "ref": [
+                "unidadeConsumo"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "tipoInstalacao": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "idTipoOS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "descTipoOs": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "codMaterialSAP": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "descMaterial": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "qtdMin": {
+          "type": "cds.Decimal"
+        },
+        "qtdMax": {
+          "type": "cds.Decimal"
+        },
+        "unidadeConsumo": {
+          "type": "cds.String",
+          "length": 3
+        }
+      },
+      "$syntax": "entity"
+    },
+    "regrasNamespace.Parametros": {
+      "kind": "entity",
+      "elements": {
+        "parametros": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "labelParametro": {
+          "type": "cds.String"
+        },
+        "valor": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "regrasNamespace.RegraDeCalculo": {
+      "kind": "entity",
+      "elements": {
+        "momento": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "tipoDeErro": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Mensagem": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "regrasNamespace.TecnicoPorEPO": {
+      "kind": "entity",
+      "elements": {
+        "loginTecnico": {
+          "key": true,
+          "type": "cds.String",
+          "length": 120
+        },
+        "CodFornecedorSAP": {
+          "type": "cds.String",
+          "length": 50
+        }
+      }
+    },
+    "regrasNamespace.TipoOs": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "elements": {
+        "mandt": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "tipo_Os": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "desc_os": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "aplicacao": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "regrasNamespace.TipoOsHelpOdata": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "regrasNamespace.TipoOs"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "tipo_Os"
+              ],
+              "as": "tipoOs"
+            },
+            {
+              "ref": [
+                "desc_os"
+              ],
+              "as": "descricaoOs"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "tipoOs": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "descricaoOs": {
+          "type": "cds.String",
+          "length": 50
+        }
+      },
+      "$syntax": "entity"
+    }
+  },
+  "meta": {
+    "flavor": "inferred",
+    "creator": "CDS Compiler v1.46.6"
+  },
+  "$version": "1.0"
+}

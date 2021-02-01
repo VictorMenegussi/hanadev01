@@ -1,0 +1,4 @@
+VIEW regrasNamespace_TipoOsHelpOdata AS SELECT
+  TipoOs_0.tipo_Os AS tipoOs,
+  TipoOs_0.desc_os AS descricaoOs
+FROM regrasNamespace_TipoOs AS TipoOs_0

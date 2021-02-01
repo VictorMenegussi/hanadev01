@@ -1,0 +1,10 @@
+VIEW regrasNamespace_BOM2ODATA AS SELECT
+  BOM_0.tipoInstalacao,
+  BOM_0.idTipoOS,
+  CAST('' AS NVARCHAR(50)) descTipoOs,
+  BOM_0.codMaterialSAP,
+  CAST('' AS NVARCHAR(50)) descMaterial,
+  BOM_0.qtdMin,
+  BOM_0.qtdMax,
+  BOM_0.unidadeConsumo
+FROM regrasNamespace_BOM AS BOM_0
